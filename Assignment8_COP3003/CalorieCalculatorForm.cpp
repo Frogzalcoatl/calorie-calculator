@@ -5,12 +5,17 @@ using namespace System;
 using namespace System::Windows::Forms;
 using namespace Assignment8COP3003;
 
-int main(array<String^>^ args)
+[STAThreadAttribute]
+// STA = Single Threaded Apartment
+// Winforms is old and requires STA
+// Certain features can cause crashes if the program is not forced to STA
+int main()
 {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     CalorieCalculatorForm form;
     Application::Run(% form);
+    return 0;
 }
 
 bool CalorieCalculatorForm::isValidSubmission() {

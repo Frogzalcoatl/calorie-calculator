@@ -35,69 +35,32 @@ namespace Assignment8COP3003 {
 			}
 		}
 	private: System::Windows::Forms::Panel^ resultsPanel;
-	protected:
-
 	private: System::Windows::Forms::Label^ activityLabel;
 	private: System::Windows::Forms::ComboBox^ activityDropdown;
-
-
 	private: System::Windows::Forms::Label^ poundsLabel;
-
 	private: System::Windows::Forms::NumericUpDown^ weightNumeric;
 	private: System::Windows::Forms::Label^ heightInchesLabel;
-
-
-
 	private: System::Windows::Forms::NumericUpDown^ heightInchesNumeric;
 	private: System::Windows::Forms::Label^ heightFeetLabel;
-
-
-
 	private: System::Windows::Forms::NumericUpDown^ heightFeetNumeric;
-
-
-
-
 	private: System::Windows::Forms::Label^ genderLabel;
-
-
-
-
 	private: System::Windows::Forms::Label^ ageRangeLabel;
-
-
 	private: System::Windows::Forms::NumericUpDown^ ageNumeric;
-
-
 	private: System::Windows::Forms::Button^ submitButton;
 	private: System::Windows::Forms::Label^ weightLabel;
-
-
 	private: System::Windows::Forms::Label^ heightLabel;
-
 	private: System::Windows::Forms::Label^ ageLabel;
 	private: System::Windows::Forms::Panel^ inputPanel;
-
-
-
 	private: System::Windows::Forms::RadioButton^ genderButtonFemale;
 	private: System::Windows::Forms::RadioButton^ genderButtonMale;
 	private: System::Windows::Forms::Label^ errorMessageLabel;
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::Label^ label16;
-
-
-
 	private: System::Windows::Forms::Label^ label15;
 	private: System::Windows::Forms::Label^ label17;
 	private: System::Windows::Forms::Label^ label20;
-
-
-
 	private: System::Windows::Forms::Label^ label19;
-
 	private: System::Windows::Forms::Label^ label18;
-
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label4;
@@ -106,49 +69,17 @@ namespace Assignment8COP3003 {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ maintainWeightLabel;
 	private: System::Windows::Forms::Label^ fastWeightGainLabel;
-
-
 	private: System::Windows::Forms::Label^ weightGainLabel;
-
 	private: System::Windows::Forms::Label^ mildWeightGainLabel;
-
 	private: System::Windows::Forms::Label^ extremeWeightLossLabel;
-
 	private: System::Windows::Forms::Label^ weightLossLabel;
-
 	private: System::Windows::Forms::Label^ mildWeightLossLabel;
 	private: System::Windows::Forms::Button^ returnButton;
-
-
-
-
-
-	protected:
-
-	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -718,9 +649,9 @@ namespace Assignment8COP3003 {
 
 		}
 #pragma endregion
-private: bool isValidSubmission();
-private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void displayResults(const unsigned long long maintenenceCalories);
-private: System::Void returnButton_Click(System::Object^ sender, System::EventArgs^ e);
-};
+	private: bool isValidSubmission();
+	private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void displayResults(const unsigned long long maintenenceCalories);
+	private: System::Void returnButton_Click(System::Object^ sender, System::EventArgs^ e);
+	};
 }
