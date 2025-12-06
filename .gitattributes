@@ -1,0 +1,2 @@
+*.h linguist-generated=true
+*.cpp linguist-generated=false
