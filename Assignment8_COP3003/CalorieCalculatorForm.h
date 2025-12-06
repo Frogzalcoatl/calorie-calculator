@@ -414,9 +414,9 @@ namespace Assignment8COP3003 {
 			this->label19->AutoSize = true;
 			this->label19->Location = System::Drawing::Point(3, 228);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(126, 25);
+			this->label19->Size = System::Drawing::Size(132, 25);
 			this->label19->TabIndex = 41;
-			this->label19->Text = L"Weight gain";
+			this->label19->Text = L"Weight gain:";
 			// 
 			// label18
 			// 
@@ -701,7 +701,9 @@ namespace Assignment8COP3003 {
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::White;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Margin = System::Windows::Forms::Padding(6);
+			this->MaximizeBox = false;
 			this->Name = L"CalorieCalculatorForm";
 			this->Text = L"CalorieCalculator";
 			this->resultsPanel->ResumeLayout(false);
@@ -716,7 +718,7 @@ namespace Assignment8COP3003 {
 
 		}
 #pragma endregion
-private: bool isValidSubmittion();
+private: bool isValidSubmission();
 private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void displayResults(const unsigned long long maintenenceCalories);
 private: System::Void returnButton_Click(System::Object^ sender, System::EventArgs^ e);

@@ -1,5 +1,5 @@
 #include "CalorieCalculatorForm.h"
-#include <iostream>
+#include <cmath>
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -13,7 +13,7 @@ int main(array<String^>^ args)
     Application::Run(% form);
 }
 
-bool CalorieCalculatorForm::isValidSubmittion() {
+bool CalorieCalculatorForm::isValidSubmission() {
     if (!this->genderButtonMale->Checked && !this->genderButtonFemale->Checked) {
         this->errorMessageLabel->Text = "Must select a gender";
         return false;
@@ -30,7 +30,7 @@ bool CalorieCalculatorForm::isValidSubmittion() {
     return true;
 }
 
-unsigned long long calculateBMR(bool isMale, const int weightLbsInput, const int heightFeetInput, const int heightInchesInput, const int ageInput, const double activityLevelMultiplier) {
+static unsigned long long calculateBMR(bool isMale, const int weightLbsInput, const int heightFeetInput, const int heightInchesInput, const int ageInput, const double activityLevelMultiplier) {
     // Using the Mifflin-St Jeor Equation for BMR (Basal Metabolic Rate)
     // Source: https://www.calculator.net/calorie-calculator.html
     unsigned long long bmr = 0;
@@ -59,7 +59,7 @@ void CalorieCalculatorForm::displayResults(const unsigned long long maintenenceC
     this->resultsPanel->Visible = true;
 }
 
-double getActivityLevelMultiplier(int dropdownIndex) {
+static double getActivityLevelMultiplier(int dropdownIndex) {
     switch (dropdownIndex) {
         case 0: return 1.0;
         case 1: return 1.2;
@@ -73,7 +73,7 @@ double getActivityLevelMultiplier(int dropdownIndex) {
 }
 
 void CalorieCalculatorForm::submitButton_Click(Object^ sender, EventArgs^ e) {
-    bool isValidSubmissionResult = this->isValidSubmittion();
+    bool isValidSubmissionResult = this->isValidSubmission();
     this->errorMessageLabel->Visible = !isValidSubmissionResult;
     if (!isValidSubmissionResult) {
         return;
