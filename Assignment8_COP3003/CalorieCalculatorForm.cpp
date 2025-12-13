@@ -18,12 +18,21 @@ int main()
     return 0;
 }
 
+enum UnitsTabs {
+    US,
+    Metric
+};
+
 bool CalorieCalculatorForm::isValidSubmission() {
     if (!this->genderButtonMale->Checked && !this->genderButtonFemale->Checked) {
         this->errorMessageLabel->Text = "Must select a gender";
         return false;
     }
-    if (this->heightFeetNumeric->Value == 0 && this->heightInchesNumeric->Value == 0) {
+    if (
+        this->tabControl1->SelectedIndex == UnitsTabs::US && 
+        this->heightFeetNumeric->Value == 0 &&
+        this->heightInchesNumeric->Value == 0
+        ) {
         this->errorMessageLabel->Text = "Enter a valid height";
         return false;
     }
@@ -35,13 +44,26 @@ bool CalorieCalculatorForm::isValidSubmission() {
     return true;
 }
 
-static unsigned long long calculateBMR(bool isMale, const int weightLbsInput, const int heightFeetInput, const int heightInchesInput, const int ageInput, const double activityLevelMultiplier) {
+static unsigned int USToMetricHeightCm(const unsigned int feet, const unsigned int inches) {
+    return round(feet * 30.48 + inches * 2.54);
+}
+
+static double USToMetricWeightKg(const unsigned int lbs) {
+    return lbs * 0.4535924;
+}
+
+static unsigned int metricToUSHeightInches(const unsigned int cm) {
+    return round(cm * 0.3937008);
+}
+
+static unsigned int metricToUSWeightLbs(const double kg) {
+    return round(kg * 2.204623);
+}
+
+static unsigned long long calculateBMRUnitsMetric(const bool isMale, const double weightKg, const unsigned int heightCm, const unsigned int age, const double activityLevelMultiplier) {
     // Using the Mifflin-St Jeor Equation for BMR (Basal Metabolic Rate)
     // Source: https://www.calculator.net/calorie-calculator.html
     unsigned long long bmr = 0;
-    double weightKg = weightLbsInput * 0.4535924;
-    long long heightCm = heightFeetInput * 30.48 + heightInchesInput * 2.54;
-    int age = ageInput;
     bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
     if (isMale) {
         bmr += 5;
@@ -50,6 +72,12 @@ static unsigned long long calculateBMR(bool isMale, const int weightLbsInput, co
     }
     bmr *= activityLevelMultiplier;
     return bmr;
+}
+
+static unsigned long long calculateBMRUnitsUS(const bool isMale, const double weightLbs, const unsigned int heightFeet, const unsigned int heightInches, const unsigned int age, const double activityLevelMultiplier) {
+    const double weightKg = USToMetricWeightKg(weightLbs);
+    const unsigned int heightCm = USToMetricHeightCm(heightFeet, heightInches);
+    return calculateBMRUnitsMetric(isMale, weightKg, heightCm, age, activityLevelMultiplier);
 }
 
 void CalorieCalculatorForm::displayResults(const unsigned long long maintenenceCalories) {
@@ -84,14 +112,52 @@ void CalorieCalculatorForm::submitButton_Click(Object^ sender, EventArgs^ e) {
         return;
     }
     const double activityLevelMultiplier = getActivityLevelMultiplier(this->activityDropdown->SelectedIndex);
-    const unsigned long long maintenenceCalories = calculateBMR(
-        this->genderButtonMale->Checked, (int)this->weightNumeric->Value, (int)this->heightFeetNumeric->Value,
-        (int)this->heightInchesNumeric->Value, (int)this->ageNumeric->Value, activityLevelMultiplier
-    );
+    unsigned long long maintenenceCalories = 0;
+    switch (this->tabControl1->SelectedIndex) {
+        case UnitsTabs::US:
+            maintenenceCalories = calculateBMRUnitsUS(
+                this->genderButtonMale->Checked, (double)this->weightLbsNumeric->Value, (unsigned int)this->heightFeetNumeric->Value,
+                (unsigned int)this->heightInchesNumeric->Value, (unsigned int)this->ageNumeric->Value, activityLevelMultiplier
+            );
+            break;
+        case UnitsTabs::Metric:
+            maintenenceCalories = calculateBMRUnitsMetric(
+                this->genderButtonMale->Checked, (double)this->weightKgNumeric->Value, (unsigned int)this->heightCmNumeric->Value,
+                (unsigned int)this->ageNumeric->Value, activityLevelMultiplier
+            );
+            break;
+        default:
+            this->errorMessageLabel->Text = "Invalid Units Tab";
+            return;
+    }
     this->displayResults(maintenenceCalories);
 }
 
 void CalorieCalculatorForm::returnButton_Click(System::Object^ sender, System::EventArgs^ e) {
     this->inputPanel->Visible = true;
     this->resultsPanel->Visible = false;
+}
+
+void CalorieCalculatorForm::updateUSTab() {
+    unsigned int heightInches = metricToUSHeightInches((unsigned int)this->heightCmNumeric->Value);
+    unsigned int heightFeet = heightInches / 12;
+    heightInches = heightInches % 12;
+    this->heightInchesNumeric->Value = heightInches;
+    this->heightFeetNumeric->Value = heightFeet;
+    unsigned int weightLbs = metricToUSWeightLbs((double)this->weightKgNumeric->Value);
+    this->weightLbsNumeric->Value = weightLbs;
+}
+
+void CalorieCalculatorForm::updateMetricTab() {
+    unsigned int heightCm = USToMetricHeightCm((unsigned int)this->heightFeetNumeric->Value, (unsigned int)this->heightInchesNumeric->Value);
+    this->heightCmNumeric->Value = heightCm;
+    unsigned int weightKg = USToMetricWeightKg((unsigned int)this->weightLbsNumeric->Value);
+    this->weightKgNumeric->Value = weightKg;
+}
+
+void CalorieCalculatorForm::tabControl1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+    switch (this->tabControl1->SelectedIndex) {
+        case 0: this->updateUSTab(); break;
+        case 1: this->updateMetricTab(); break;
+    }
 }

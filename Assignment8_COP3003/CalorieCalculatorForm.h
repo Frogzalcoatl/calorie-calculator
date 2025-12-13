@@ -38,7 +38,8 @@ namespace Assignment8COP3003 {
 	private: System::Windows::Forms::Label^ activityLabel;
 	private: System::Windows::Forms::ComboBox^ activityDropdown;
 	private: System::Windows::Forms::Label^ poundsLabel;
-	private: System::Windows::Forms::NumericUpDown^ weightNumeric;
+	private: System::Windows::Forms::NumericUpDown^ weightLbsNumeric;
+
 	private: System::Windows::Forms::Label^ heightInchesLabel;
 	private: System::Windows::Forms::NumericUpDown^ heightInchesNumeric;
 	private: System::Windows::Forms::Label^ heightFeetLabel;
@@ -75,6 +76,17 @@ namespace Assignment8COP3003 {
 	private: System::Windows::Forms::Label^ weightLossLabel;
 	private: System::Windows::Forms::Label^ mildWeightLossLabel;
 	private: System::Windows::Forms::Button^ returnButton;
+	private: System::Windows::Forms::TabControl^ tabControl1;
+	private: System::Windows::Forms::TabPage^ USUnitsTab;
+	private: System::Windows::Forms::TabPage^ MetricUnitsTab;
+
+	private: System::Windows::Forms::Label^ heightCmLabel;
+	private: System::Windows::Forms::NumericUpDown^ weightKgNumeric;
+
+	private: System::Windows::Forms::Label^ weightKgLabel;
+
+	private: System::Windows::Forms::NumericUpDown^ heightCmNumeric;
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -114,27 +126,39 @@ namespace Assignment8COP3003 {
 			this->errorMessageLabel = (gcnew System::Windows::Forms::Label());
 			this->genderButtonFemale = (gcnew System::Windows::Forms::RadioButton());
 			this->genderButtonMale = (gcnew System::Windows::Forms::RadioButton());
-			this->genderLabel = (gcnew System::Windows::Forms::Label());
-			this->heightInchesLabel = (gcnew System::Windows::Forms::Label());
-			this->poundsLabel = (gcnew System::Windows::Forms::Label());
 			this->ageRangeLabel = (gcnew System::Windows::Forms::Label());
-			this->heightInchesNumeric = (gcnew System::Windows::Forms::NumericUpDown());
 			this->ageNumeric = (gcnew System::Windows::Forms::NumericUpDown());
+			this->submitButton = (gcnew System::Windows::Forms::Button());
+			this->genderLabel = (gcnew System::Windows::Forms::Label());
+			this->activityDropdown = (gcnew System::Windows::Forms::ComboBox());
 			this->activityLabel = (gcnew System::Windows::Forms::Label());
 			this->ageLabel = (gcnew System::Windows::Forms::Label());
-			this->heightFeetLabel = (gcnew System::Windows::Forms::Label());
-			this->weightNumeric = (gcnew System::Windows::Forms::NumericUpDown());
-			this->heightFeetNumeric = (gcnew System::Windows::Forms::NumericUpDown());
-			this->activityDropdown = (gcnew System::Windows::Forms::ComboBox());
-			this->submitButton = (gcnew System::Windows::Forms::Button());
-			this->weightLabel = (gcnew System::Windows::Forms::Label());
 			this->heightLabel = (gcnew System::Windows::Forms::Label());
+			this->weightLabel = (gcnew System::Windows::Forms::Label());
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->USUnitsTab = (gcnew System::Windows::Forms::TabPage());
+			this->heightInchesLabel = (gcnew System::Windows::Forms::Label());
+			this->poundsLabel = (gcnew System::Windows::Forms::Label());
+			this->heightFeetLabel = (gcnew System::Windows::Forms::Label());
+			this->weightLbsNumeric = (gcnew System::Windows::Forms::NumericUpDown());
+			this->heightInchesNumeric = (gcnew System::Windows::Forms::NumericUpDown());
+			this->heightFeetNumeric = (gcnew System::Windows::Forms::NumericUpDown());
+			this->MetricUnitsTab = (gcnew System::Windows::Forms::TabPage());
+			this->weightKgLabel = (gcnew System::Windows::Forms::Label());
+			this->heightCmNumeric = (gcnew System::Windows::Forms::NumericUpDown());
+			this->weightKgNumeric = (gcnew System::Windows::Forms::NumericUpDown());
+			this->heightCmLabel = (gcnew System::Windows::Forms::Label());
 			this->resultsPanel->SuspendLayout();
 			this->inputPanel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightInchesNumeric))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ageNumeric))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightNumeric))->BeginInit();
+			this->tabControl1->SuspendLayout();
+			this->USUnitsTab->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightLbsNumeric))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightInchesNumeric))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightFeetNumeric))->BeginInit();
+			this->MetricUnitsTab->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightCmNumeric))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightKgNumeric))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// resultsPanel
@@ -269,7 +293,7 @@ namespace Assignment8COP3003 {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(75, 20);
 			this->label6->TabIndex = 48;
-			this->label6->Text = L"3 lb/week";
+			this->label6->Text = L"2 lb/week";
 			// 
 			// label5
 			// 
@@ -399,21 +423,16 @@ namespace Assignment8COP3003 {
 			this->inputPanel->Controls->Add(this->errorMessageLabel);
 			this->inputPanel->Controls->Add(this->genderButtonFemale);
 			this->inputPanel->Controls->Add(this->genderButtonMale);
-			this->inputPanel->Controls->Add(this->genderLabel);
-			this->inputPanel->Controls->Add(this->heightInchesLabel);
-			this->inputPanel->Controls->Add(this->poundsLabel);
 			this->inputPanel->Controls->Add(this->ageRangeLabel);
-			this->inputPanel->Controls->Add(this->heightInchesNumeric);
 			this->inputPanel->Controls->Add(this->ageNumeric);
+			this->inputPanel->Controls->Add(this->submitButton);
+			this->inputPanel->Controls->Add(this->genderLabel);
+			this->inputPanel->Controls->Add(this->activityDropdown);
 			this->inputPanel->Controls->Add(this->activityLabel);
 			this->inputPanel->Controls->Add(this->ageLabel);
-			this->inputPanel->Controls->Add(this->heightFeetLabel);
-			this->inputPanel->Controls->Add(this->weightNumeric);
-			this->inputPanel->Controls->Add(this->heightFeetNumeric);
-			this->inputPanel->Controls->Add(this->activityDropdown);
-			this->inputPanel->Controls->Add(this->submitButton);
-			this->inputPanel->Controls->Add(this->weightLabel);
 			this->inputPanel->Controls->Add(this->heightLabel);
+			this->inputPanel->Controls->Add(this->weightLabel);
+			this->inputPanel->Controls->Add(this->tabControl1);
 			this->inputPanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->inputPanel->Location = System::Drawing::Point(0, 0);
 			this->inputPanel->Name = L"inputPanel";
@@ -437,7 +456,7 @@ namespace Assignment8COP3003 {
 			// genderButtonFemale
 			// 
 			this->genderButtonFemale->AutoSize = true;
-			this->genderButtonFemale->Location = System::Drawing::Point(226, 86);
+			this->genderButtonFemale->Location = System::Drawing::Point(222, 104);
 			this->genderButtonFemale->Name = L"genderButtonFemale";
 			this->genderButtonFemale->Size = System::Drawing::Size(101, 29);
 			this->genderButtonFemale->TabIndex = 36;
@@ -448,7 +467,7 @@ namespace Assignment8COP3003 {
 			// genderButtonMale
 			// 
 			this->genderButtonMale->AutoSize = true;
-			this->genderButtonMale->Location = System::Drawing::Point(132, 86);
+			this->genderButtonMale->Location = System::Drawing::Point(128, 104);
 			this->genderButtonMale->Name = L"genderButtonMale";
 			this->genderButtonMale->Size = System::Drawing::Size(77, 29);
 			this->genderButtonMale->TabIndex = 35;
@@ -456,62 +475,23 @@ namespace Assignment8COP3003 {
 			this->genderButtonMale->Text = L"Male";
 			this->genderButtonMale->UseVisualStyleBackColor = true;
 			// 
-			// genderLabel
-			// 
-			this->genderLabel->AutoSize = true;
-			this->genderLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->genderLabel->Location = System::Drawing::Point(1, 88);
-			this->genderLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->genderLabel->Name = L"genderLabel";
-			this->genderLabel->Size = System::Drawing::Size(83, 25);
-			this->genderLabel->TabIndex = 25;
-			this->genderLabel->Text = L"Gender";
-			// 
-			// heightInchesLabel
-			// 
-			this->heightInchesLabel->AutoSize = true;
-			this->heightInchesLabel->Location = System::Drawing::Point(368, 146);
-			this->heightInchesLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->heightInchesLabel->Name = L"heightInchesLabel";
-			this->heightInchesLabel->Size = System::Drawing::Size(75, 25);
-			this->heightInchesLabel->TabIndex = 30;
-			this->heightInchesLabel->Text = L"Inches";
-			// 
-			// poundsLabel
-			// 
-			this->poundsLabel->AutoSize = true;
-			this->poundsLabel->Location = System::Drawing::Point(250, 209);
-			this->poundsLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->poundsLabel->Name = L"poundsLabel";
-			this->poundsLabel->Size = System::Drawing::Size(85, 25);
-			this->poundsLabel->TabIndex = 32;
-			this->poundsLabel->Text = L"Pounds";
-			// 
 			// ageRangeLabel
 			// 
 			this->ageRangeLabel->AutoSize = true;
 			this->ageRangeLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ageRangeLabel->Location = System::Drawing::Point(250, 37);
+			this->ageRangeLabel->Location = System::Drawing::Point(258, 55);
 			this->ageRangeLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->ageRangeLabel->Name = L"ageRangeLabel";
 			this->ageRangeLabel->Size = System::Drawing::Size(120, 25);
 			this->ageRangeLabel->TabIndex = 23;
 			this->ageRangeLabel->Text = L"ages 15-80";
 			// 
-			// heightInchesNumeric
-			// 
-			this->heightInchesNumeric->Location = System::Drawing::Point(285, 140);
-			this->heightInchesNumeric->Name = L"heightInchesNumeric";
-			this->heightInchesNumeric->Size = System::Drawing::Size(80, 31);
-			this->heightInchesNumeric->TabIndex = 29;
-			// 
 			// ageNumeric
 			// 
 			this->ageNumeric->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ageNumeric->Location = System::Drawing::Point(132, 31);
+			this->ageNumeric->Location = System::Drawing::Point(128, 49);
 			this->ageNumeric->Margin = System::Windows::Forms::Padding(6);
 			this->ageNumeric->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 80, 0, 0, 0 });
 			this->ageNumeric->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 15, 0, 0, 0 });
@@ -519,72 +499,6 @@ namespace Assignment8COP3003 {
 			this->ageNumeric->Size = System::Drawing::Size(106, 31);
 			this->ageNumeric->TabIndex = 22;
 			this->ageNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 15, 0, 0, 0 });
-			// 
-			// activityLabel
-			// 
-			this->activityLabel->AutoSize = true;
-			this->activityLabel->Location = System::Drawing::Point(0, 262);
-			this->activityLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->activityLabel->Name = L"activityLabel";
-			this->activityLabel->Size = System::Drawing::Size(81, 25);
-			this->activityLabel->TabIndex = 34;
-			this->activityLabel->Text = L"Activity";
-			// 
-			// ageLabel
-			// 
-			this->ageLabel->AutoSize = true;
-			this->ageLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->ageLabel->Location = System::Drawing::Point(1, 33);
-			this->ageLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->ageLabel->Name = L"ageLabel";
-			this->ageLabel->Size = System::Drawing::Size(50, 25);
-			this->ageLabel->TabIndex = 18;
-			this->ageLabel->Text = L"Age";
-			// 
-			// heightFeetLabel
-			// 
-			this->heightFeetLabel->AutoSize = true;
-			this->heightFeetLabel->Location = System::Drawing::Point(221, 146);
-			this->heightFeetLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->heightFeetLabel->Name = L"heightFeetLabel";
-			this->heightFeetLabel->Size = System::Drawing::Size(55, 25);
-			this->heightFeetLabel->TabIndex = 28;
-			this->heightFeetLabel->Text = L"Feet";
-			// 
-			// weightNumeric
-			// 
-			this->weightNumeric->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->weightNumeric->Location = System::Drawing::Point(132, 203);
-			this->weightNumeric->Margin = System::Windows::Forms::Padding(6);
-			this->weightNumeric->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2000, 0, 0, 0 });
-			this->weightNumeric->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
-			this->weightNumeric->Name = L"weightNumeric";
-			this->weightNumeric->Size = System::Drawing::Size(106, 31);
-			this->weightNumeric->TabIndex = 31;
-			this->weightNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 150, 0, 0, 0 });
-			// 
-			// heightFeetNumeric
-			// 
-			this->heightFeetNumeric->Location = System::Drawing::Point(132, 140);
-			this->heightFeetNumeric->Name = L"heightFeetNumeric";
-			this->heightFeetNumeric->Size = System::Drawing::Size(80, 31);
-			this->heightFeetNumeric->TabIndex = 27;
-			// 
-			// activityDropdown
-			// 
-			this->activityDropdown->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->activityDropdown->FormattingEnabled = true;
-			this->activityDropdown->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
-				L"Basal Metabolic Rate (BMR)", L"Sedentary: little or no exercise",
-					L"Light: exercise 1-3 times/week", L"Moderate: exercise 4-5 times/week", L"Active: daily exercise or intense exercise 3-4 times/week",
-					L"Very Active: intense exercise 6-7 times/week", L"Extra Active: very intense exercise daily, or physical job"
-			});
-			this->activityDropdown->Location = System::Drawing::Point(132, 262);
-			this->activityDropdown->Name = L"activityDropdown";
-			this->activityDropdown->Size = System::Drawing::Size(569, 33);
-			this->activityDropdown->TabIndex = 33;
 			// 
 			// submitButton
 			// 
@@ -601,25 +515,220 @@ namespace Assignment8COP3003 {
 			this->submitButton->UseVisualStyleBackColor = false;
 			this->submitButton->Click += gcnew System::EventHandler(this, &CalorieCalculatorForm::submitButton_Click);
 			// 
+			// genderLabel
+			// 
+			this->genderLabel->AutoSize = true;
+			this->genderLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->genderLabel->Location = System::Drawing::Point(11, 104);
+			this->genderLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->genderLabel->Name = L"genderLabel";
+			this->genderLabel->Size = System::Drawing::Size(83, 25);
+			this->genderLabel->TabIndex = 25;
+			this->genderLabel->Text = L"Gender";
+			// 
+			// activityDropdown
+			// 
+			this->activityDropdown->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->activityDropdown->FormattingEnabled = true;
+			this->activityDropdown->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+				L"Basal Metabolic Rate (BMR)", L"Sedentary: little or no exercise",
+					L"Light: exercise 1-3 times/week", L"Moderate: exercise 4-5 times/week", L"Active: daily exercise or intense exercise 3-4 times/week",
+					L"Very Active: intense exercise 6-7 times/week", L"Extra Active: very intense exercise daily, or physical job"
+			});
+			this->activityDropdown->Location = System::Drawing::Point(128, 250);
+			this->activityDropdown->Name = L"activityDropdown";
+			this->activityDropdown->Size = System::Drawing::Size(569, 33);
+			this->activityDropdown->TabIndex = 33;
+			// 
+			// activityLabel
+			// 
+			this->activityLabel->AutoSize = true;
+			this->activityLabel->Location = System::Drawing::Point(11, 250);
+			this->activityLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->activityLabel->Name = L"activityLabel";
+			this->activityLabel->Size = System::Drawing::Size(81, 25);
+			this->activityLabel->TabIndex = 34;
+			this->activityLabel->Text = L"Activity";
+			// 
+			// ageLabel
+			// 
+			this->ageLabel->AutoSize = true;
+			this->ageLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ageLabel->Location = System::Drawing::Point(11, 50);
+			this->ageLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->ageLabel->Name = L"ageLabel";
+			this->ageLabel->Size = System::Drawing::Size(50, 25);
+			this->ageLabel->TabIndex = 18;
+			this->ageLabel->Text = L"Age";
+			// 
+			// heightLabel
+			// 
+			this->heightLabel->AutoSize = true;
+			this->heightLabel->Location = System::Drawing::Point(11, 157);
+			this->heightLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->heightLabel->Name = L"heightLabel";
+			this->heightLabel->Size = System::Drawing::Size(74, 25);
+			this->heightLabel->TabIndex = 19;
+			this->heightLabel->Text = L"Height";
+			// 
 			// weightLabel
 			// 
 			this->weightLabel->AutoSize = true;
-			this->weightLabel->Location = System::Drawing::Point(0, 209);
+			this->weightLabel->Location = System::Drawing::Point(11, 200);
 			this->weightLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->weightLabel->Name = L"weightLabel";
 			this->weightLabel->Size = System::Drawing::Size(79, 25);
 			this->weightLabel->TabIndex = 20;
 			this->weightLabel->Text = L"Weight";
 			// 
-			// heightLabel
+			// tabControl1
 			// 
-			this->heightLabel->AutoSize = true;
-			this->heightLabel->Location = System::Drawing::Point(0, 146);
-			this->heightLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
-			this->heightLabel->Name = L"heightLabel";
-			this->heightLabel->Size = System::Drawing::Size(74, 25);
-			this->heightLabel->TabIndex = 19;
-			this->heightLabel->Text = L"Height";
+			this->tabControl1->Controls->Add(this->USUnitsTab);
+			this->tabControl1->Controls->Add(this->MetricUnitsTab);
+			this->tabControl1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->tabControl1->Location = System::Drawing::Point(0, 0);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(732, 408);
+			this->tabControl1->TabIndex = 36;
+			this->tabControl1->SelectedIndexChanged += gcnew System::EventHandler(this, &CalorieCalculatorForm::tabControl1_SelectedIndexChanged);
+			// 
+			// USUnitsTab
+			// 
+			this->USUnitsTab->BackColor = System::Drawing::Color::DimGray;
+			this->USUnitsTab->Controls->Add(this->heightInchesLabel);
+			this->USUnitsTab->Controls->Add(this->poundsLabel);
+			this->USUnitsTab->Controls->Add(this->heightFeetLabel);
+			this->USUnitsTab->Controls->Add(this->weightLbsNumeric);
+			this->USUnitsTab->Controls->Add(this->heightInchesNumeric);
+			this->USUnitsTab->Controls->Add(this->heightFeetNumeric);
+			this->USUnitsTab->Location = System::Drawing::Point(4, 34);
+			this->USUnitsTab->Name = L"USUnitsTab";
+			this->USUnitsTab->Padding = System::Windows::Forms::Padding(3);
+			this->USUnitsTab->Size = System::Drawing::Size(724, 370);
+			this->USUnitsTab->TabIndex = 0;
+			this->USUnitsTab->Text = L"US Units";
+			// 
+			// heightInchesLabel
+			// 
+			this->heightInchesLabel->AutoSize = true;
+			this->heightInchesLabel->Location = System::Drawing::Point(363, 125);
+			this->heightInchesLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->heightInchesLabel->Name = L"heightInchesLabel";
+			this->heightInchesLabel->Size = System::Drawing::Size(75, 25);
+			this->heightInchesLabel->TabIndex = 30;
+			this->heightInchesLabel->Text = L"Inches";
+			// 
+			// poundsLabel
+			// 
+			this->poundsLabel->AutoSize = true;
+			this->poundsLabel->Location = System::Drawing::Point(234, 175);
+			this->poundsLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->poundsLabel->Name = L"poundsLabel";
+			this->poundsLabel->Size = System::Drawing::Size(85, 25);
+			this->poundsLabel->TabIndex = 32;
+			this->poundsLabel->Text = L"Pounds";
+			// 
+			// heightFeetLabel
+			// 
+			this->heightFeetLabel->AutoSize = true;
+			this->heightFeetLabel->Location = System::Drawing::Point(211, 125);
+			this->heightFeetLabel->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
+			this->heightFeetLabel->Name = L"heightFeetLabel";
+			this->heightFeetLabel->Size = System::Drawing::Size(55, 25);
+			this->heightFeetLabel->TabIndex = 28;
+			this->heightFeetLabel->Text = L"Feet";
+			// 
+			// weightLbsNumeric
+			// 
+			this->weightLbsNumeric->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->weightLbsNumeric->Location = System::Drawing::Point(124, 166);
+			this->weightLbsNumeric->Margin = System::Windows::Forms::Padding(6);
+			this->weightLbsNumeric->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2000, 0, 0, 0 });
+			this->weightLbsNumeric->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			this->weightLbsNumeric->Name = L"weightLbsNumeric";
+			this->weightLbsNumeric->Size = System::Drawing::Size(106, 31);
+			this->weightLbsNumeric->TabIndex = 31;
+			this->weightLbsNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 150, 0, 0, 0 });
+			// 
+			// heightInchesNumeric
+			// 
+			this->heightInchesNumeric->Location = System::Drawing::Point(280, 118);
+			this->heightInchesNumeric->Name = L"heightInchesNumeric";
+			this->heightInchesNumeric->Size = System::Drawing::Size(80, 31);
+			this->heightInchesNumeric->TabIndex = 29;
+			this->heightInchesNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
+			// 
+			// heightFeetNumeric
+			// 
+			this->heightFeetNumeric->Location = System::Drawing::Point(124, 118);
+			this->heightFeetNumeric->Name = L"heightFeetNumeric";
+			this->heightFeetNumeric->Size = System::Drawing::Size(80, 31);
+			this->heightFeetNumeric->TabIndex = 27;
+			this->heightFeetNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5, 0, 0, 0 });
+			// 
+			// MetricUnitsTab
+			// 
+			this->MetricUnitsTab->BackColor = System::Drawing::Color::DimGray;
+			this->MetricUnitsTab->Controls->Add(this->weightKgLabel);
+			this->MetricUnitsTab->Controls->Add(this->heightCmNumeric);
+			this->MetricUnitsTab->Controls->Add(this->weightKgNumeric);
+			this->MetricUnitsTab->Controls->Add(this->heightCmLabel);
+			this->MetricUnitsTab->ForeColor = System::Drawing::Color::White;
+			this->MetricUnitsTab->Location = System::Drawing::Point(4, 34);
+			this->MetricUnitsTab->Name = L"MetricUnitsTab";
+			this->MetricUnitsTab->Padding = System::Windows::Forms::Padding(3);
+			this->MetricUnitsTab->Size = System::Drawing::Size(724, 370);
+			this->MetricUnitsTab->TabIndex = 1;
+			this->MetricUnitsTab->Text = L"Metric Units";
+			// 
+			// weightKgLabel
+			// 
+			this->weightKgLabel->AutoSize = true;
+			this->weightKgLabel->Location = System::Drawing::Point(234, 173);
+			this->weightKgLabel->Name = L"weightKgLabel";
+			this->weightKgLabel->Size = System::Drawing::Size(35, 25);
+			this->weightKgLabel->TabIndex = 34;
+			this->weightKgLabel->Text = L"kg";
+			// 
+			// heightCmNumeric
+			// 
+			this->heightCmNumeric->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->heightCmNumeric->Location = System::Drawing::Point(124, 118);
+			this->heightCmNumeric->Margin = System::Windows::Forms::Padding(6);
+			this->heightCmNumeric->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 3302, 0, 0, 0 });
+			this->heightCmNumeric->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			this->heightCmNumeric->Name = L"heightCmNumeric";
+			this->heightCmNumeric->Size = System::Drawing::Size(106, 31);
+			this->heightCmNumeric->TabIndex = 33;
+			this->heightCmNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 150, 0, 0, 0 });
+			// 
+			// weightKgNumeric
+			// 
+			this->weightKgNumeric->DecimalPlaces = 1;
+			this->weightKgNumeric->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->weightKgNumeric->Location = System::Drawing::Point(124, 166);
+			this->weightKgNumeric->Margin = System::Windows::Forms::Padding(6);
+			this->weightKgNumeric->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 908, 0, 0, 0 });
+			this->weightKgNumeric->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			this->weightKgNumeric->Name = L"weightKgNumeric";
+			this->weightKgNumeric->Size = System::Drawing::Size(106, 31);
+			this->weightKgNumeric->TabIndex = 32;
+			this->weightKgNumeric->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 65, 0, 0, 0 });
+			// 
+			// heightCmLabel
+			// 
+			this->heightCmLabel->AutoSize = true;
+			this->heightCmLabel->Location = System::Drawing::Point(232, 127);
+			this->heightCmLabel->Name = L"heightCmLabel";
+			this->heightCmLabel->Size = System::Drawing::Size(40, 25);
+			this->heightCmLabel->TabIndex = 0;
+			this->heightCmLabel->Text = L"cm";
 			// 
 			// CalorieCalculatorForm
 			// 
@@ -627,8 +736,8 @@ namespace Assignment8COP3003 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DimGray;
 			this->ClientSize = System::Drawing::Size(733, 409);
-			this->Controls->Add(this->resultsPanel);
 			this->Controls->Add(this->inputPanel);
+			this->Controls->Add(this->resultsPanel);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::White;
@@ -641,10 +750,17 @@ namespace Assignment8COP3003 {
 			this->resultsPanel->PerformLayout();
 			this->inputPanel->ResumeLayout(false);
 			this->inputPanel->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightInchesNumeric))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ageNumeric))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightNumeric))->EndInit();
+			this->tabControl1->ResumeLayout(false);
+			this->USUnitsTab->ResumeLayout(false);
+			this->USUnitsTab->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightLbsNumeric))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightInchesNumeric))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightFeetNumeric))->EndInit();
+			this->MetricUnitsTab->ResumeLayout(false);
+			this->MetricUnitsTab->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->heightCmNumeric))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightKgNumeric))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -653,5 +769,8 @@ namespace Assignment8COP3003 {
 	private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void displayResults(const unsigned long long maintenenceCalories);
 	private: System::Void returnButton_Click(System::Object^ sender, System::EventArgs^ e);
-	};
+	private: System::Void updateUSTab();
+	private: System::Void updateMetricTab();
+	private: System::Void tabControl1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+};
 }
