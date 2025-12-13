@@ -157,7 +157,7 @@ void CalorieCalculatorForm::updateMetricTab() {
 
 void CalorieCalculatorForm::tabControl1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
     switch (this->tabControl1->SelectedIndex) {
-        case 0: this->updateUSTab(); break;
-        case 1: this->updateMetricTab(); break;
+        case UnitsTabs::US: this->updateUSTab(); break;
+        case UnitsTabs::Metric: this->updateMetricTab(); break;
     }
 }
